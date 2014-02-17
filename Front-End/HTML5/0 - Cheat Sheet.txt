@@ -1,0 +1,112 @@
+0 - Cheat Sheet
+***************************************
+
+- No he agregado algunos elementos por ser elementos que dan formato (sin carga semántica) como <basefont>, <center>, <font>, <i>, ...
+- Tampoco he agregado elementos desfasados como <applet>, <frame>,...
+- Falta agregar los siguientes elementos: <area>, <command>, <details>, <dialog>, <keygen>, <legend>, <map>, <menu>, <object>, <param>, <rp>, <rt>, <ruby>, <source>, <time>, <var>.
+
+<!DOCTYPE html> - Indica que es un documento HTML5
+<html> - Inicio del documento HTML
+<head> - Cabecera, contiene información no visible
+<body> - Cuerpo, es lo que se suele mostrar
+<!-- texto --> - Comentario, el texto que se agrega no se muestra ni se interpreta
+
+Etiquetas del HEAD
+********************************
+<base> - Se utiliza para indicar una href base para las href relativas usadas en la página.
+<noscript> - Define una sección que se ejecuta si no se pueden ejecutar scripts (están desactivados en el navegador).
+<link> - Se utiliza para asociar la página a un archivo externo.
+<meta> - Representa otra información que no se puede obtener a partir de las otras etiquetas del head.
+<script> - Se utiliza para embeber scripts ya sea directamente o mediante un archivo.
+<style> - Se utiliza para añadir un estilo css dentro de la misma página.
+<title> - Se utiliza para asignar un título a la página.
+
+Texto HTML
+********************************
+Las marcas de texto en html, se emplean para el estructurado semántico del contenido
+	<p> - párrafo
+	<br> - Salto de línea de texto.  Sólo debe usarse cuando sea necesario para no perder su sentido semántico.
+	<h1>-<h6> - Cabeceras o titulares, el de mayor peso es h1
+	<hgroup> - Se utiliza para agrupar titulares sin que afecte al posicionamiento (repetición de h1)
+	<hr> - Línea horizontal de separación
+	<a> - Se utiliza para establecer un enlace, normalmente encierra una palabra o texto
+
+	<abbr> - Abreviatura
+	<acronym>* - Acronimo.  Propiedad title para poner texto completo
+	<address> - Define una dirección.
+	<bdo> - Se utiliza para indicar la dirección del texto a mostrar
+	<blockquote> - Cita textual de un texto externo.
+	<cite>,<q> - Cita. Equivalente a blockquote.
+	<code> - Se usa para representar código fuente.
+	<del> - Texto borrado (tachado)
+	<dfn> - Definición. Propiedad title para poner la definición de la palabra
+	<em> - da énfasis al texto que encierra -- Habitualmente cursiva
+	<ins> - Texto insertado recientemente (subrayado)
+	<kbd> - Define un texto de teclado
+	<mark> - Ilumina el texto marcado
+	<pre> - Texto preformateado, los elementos en blanco se mantienen igual que en el texto original.
+	<samp> - Define un ejemplo de código
+	<small> - Se usa para indicar que un texto tiene que ser pequeño
+	<strong> - Máxima importancia al texto que encierra -- Habitualmente negrita
+	<sub> - Subíndice
+	<sup> - Superíndice
+
+	<ul> - Lista no ordenada
+	<ol> - Lista ordenada
+	<li> - Elemento de la lista
+	<dl>, <dt> y <dd> - Listas de definiciones. Lista, término, definición.
+
+Estructura y layout
+********************************
+A la hora de crear un layout para la representación de una página, se suelen agrupar en bloques, existen 2 tipos de bloques, los que tienen un significado semántico y los que no (div y span). Estos bloques son:
+	<header> - Se utiliza para establecer la cabecera de la página (aunque también se usa para headers de articles)
+	<nav> - Es el menú de navegación, sólo debe haber uno por página.
+	<section> - Sección del documento
+	<article> - Bloque que define una unidad de información
+	<aside> - Contenido tangencial al principal
+	<footer> - Es el pie de página o de un artículo
+	<div> - No tiene significado semántico.  Agrupa en bloques
+	<span> - No tiene significado semántico.  Agrupa en línea
+
+Multimedia
+********************************
+<audio> - Define el contenido de sonido
+<canvas> - Nos permite dibujar gráficos directamente en esa zona
+<embed> - Representa la integración de una aplicación externa o plugin
+<figure> - Define un grupo de contenido multimedia
+	<img> - Define una imagen
+	<figcaption> - Define el texto que acompaña a la imagen
+<video> - Define el contenido de un video
+
+Tablas
+********************************
+<table> - Define una tabla
+	<caption> - Define el texto superior de una tabla. Primer elto antes que ninguna fila
+	<tr> - Fila en una tabla
+	<thead> - Cabecera de la tabla.  Aquí las celdas son th
+		<th> - Celda que conforma la cabecera de una tabla
+	<tfoot> - Pie de la tabla
+	<tbody> - Cuerpo de la tabla
+	<td> - Celda de una tabla (para tfoot y tbody)
+	<colgroup> - Define un grupo de columnas en una tabla
+		<col> - Define los atributos de la columna en una tabla
+
+Formulario
+********************************
+<form> - Formulario
+	<input>	- Campo para introducir datos.  Tiene muchas opciones
+	<label> - Línea de texto.
+	<textarea> - Campo para introducir datos de un área
+	<select> - Lista seleccionable
+		<optgroup> - Sirve para agrupar opciones en diferentes categorías
+		<option> - Opción de una lista
+	<datalist> - Listado que aparece en un inputo como un autocompletar (utiliza options)
+	<fieldset> - Define un fieldset para agrupar un conjunto de elementos
+<output> - Muestra valores obtenidos a partir de inputs
+
+Otros
+********************************
+<button> - Agrega un botón
+<iframe> - Agrega una subventana inline
+<meter> - Barra de progreso y tiene varios atributos
+<progress> - Similar al anterior.  Hay que añadir javascript para irlo actualizándolo

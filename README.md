@@ -9,6 +9,8 @@ Algunos de los resúmenes serían útiles incluso para personas que no han leido
 
 Si bien puede ser una buena forma para aprender (mucho contenido concentrado) justamente si no se ha visto algo de contenido relacionado previamente puede ser excesiva información.  Sin embargo, para aquellos que ya tienen una cierta idea, pero en determinado momento no recuerdan algo pueden ser una estupenda forma de ahorrarnos mucho tiempo volviendo a buscar por internet; en todo caso, espero que sean de utilidad.
 
-Estructura:
-	- Utilidades:
+Estructura:<br>
+	- Front-End<br>
+		* HTML5<br>
+	- Utilidades:<br>
 		* GIT (En proceso)
