@@ -1,0 +1,24 @@
+20 - Enlaces de interés
+
+
+Webs:
+	- http://gitscm.com/ -  Página oficial de GIT
+	- http://try.github.io/ - Ejercicios sencillos de GIT para aprender
+	- http://git-scm.com/book/es - Libro Pro GIT en español
+	- http://hoth.entp.com/output/git_for_designers.html - Explicación de la estructura y funcionamiento de git
+	- http://pcottle.github.io/learnGitBranching/ - Web/tutorial que muestra gráficamente cómo van evolucionando las ramas.
+
+Cheat sheets:
+	http://www.cheat-sheets.org/saved-copy/git-cheat-sheet.pdf
+	http://cheat.errtheblog.com/s/git
+
+Repositorios:
+	- https://github.com/Mejorandola - Repositorio de Mejorando.la con el código de varios de sus proyectos.
+
+Videotutoriales:
+	Comunidad mejorando.la, 3 videos (en este orden):
+		- https://www.youtube.com/watch?v=C_xFDRsEM7A
+		- https://www.youtube.com/watch?v=H5otM7wnvnM
+		- https://www.youtube.com/watch?v=H5otM7wnvnM
+	Clase práctica de Git Desarrolloweb:
+		- https://www.youtube.com/watch?v=YPrdZq4YTn4

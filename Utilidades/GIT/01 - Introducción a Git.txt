@@ -1,0 +1,28 @@
+01 - Introducción a Git
+
+¿Qué es un SCV?
+****************************************
+
+SCV son las iniciales de Sistema de Control de Versiones, SVC en inglés.  Se utiliza para llevar un control de una serie de archivos y las modificaciones que han sufrido a lo largo del tiempo.
+
+Imagina que estás creando una página web.  Llegas a un punto en el que la web es estable, pero quieres añadir una funcionalidad extra que te parece bastante buena, empiezas a modificarla y cuando te das cuenta salen errores por todos lados y es preferible desechar esa opción, pero... ¿Cómo volvemos al estado anterior?
+
+Si has sido precavido y has hecho una copia, bastaría con borrar y usar la copia, aunque no siempre se puede hacer eso y además, si cada vez que tenemos que hacer cambios realizamos una copia manual indicándole fecha o algo para diferenciarlos pronto nos encontraremos con una gran cantidad de copias que resulta difícil de gestionar.
+
+Los SVC nos permiten abstraernos de esa complejidad, gestionando todo lo que serían las diferentes versiones de una forma fácil y con una serie de utilidades adicionales que iremos viendo.
+
+Si bien, para gráficos, videos y demás no es lo más recomendable, para aquellos archivos que sean de texto plano (la mayoría de los archivos de código) es muy potente ya que va llevando un control de lo que se cambió en cada archivo, esto facilita ver en cada actualización lo que se cambió y sobre todo es útil cuando haya varias personas trabajando sobre el mismo archivo.
+
+Sistemas centralizados y distribuidos
+****************************************
+
+Hay que hacer una distinción entre los 2 tipos de SVC:
+
+Los centralizados.  En los que la información del repositorio está en un único servidor como el caso de Subversion, las diferentes personas que trabajen sobre ese repositorio tienen que estar conectados para poder acceder a las diferentes versiones o aplicar los cambios.
+
+Los distribuidos.  Si bien sigue existiendo una especie de servidor central, cada persona no tiene una versión sobre la que trabaja, sino una copia entera del repositorio de forma que no necesita conexión al servidor central para poder trabajar tranquilamente y navegando entre diferentes ramas y subiendo información y cada cierto tiempo "sincronizarlos" cuando se desee.
+
+¿Por qué Git?
+****************************************
+En lo que a mi respecta cumpliendo con lo anterior ya estoy contento, existen otros SCV distribuidos como Mercurial, cuyas diferencias más allá de los comandos (incluso algunos son iguales o similares) son pocas y tampoco se bien cuales son ¿Por qué usar entonces Git? Porque es el más usado y tiene una red social como Github que facilita compartir el código, no hay más (al menos en lo que respecta a mi).
+

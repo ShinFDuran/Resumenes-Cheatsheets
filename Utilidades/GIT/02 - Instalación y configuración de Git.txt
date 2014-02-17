@@ -1,0 +1,31 @@
+02 - Instalación y configuración de Git
+
+Instalación de Git
+****************************************
+
+Hay muchos tutoriales sobre eso dependiendo el SO, echar un vistazo a alguno.
+
+Configuración de Git
+****************************************
+Una vez instalado, si nos vamos a la aplicación git bash nos llevará a un shell, aquí podemos entre otras cosas personalizar nuestra identidad de git
+
+git config --global user.name "Nombre Usuario"
+git config --global user.email "E-Mail Usuario"
+
+Este es un paso importante para generar una clave SSH (modo de establecer una conexión segura entre nuestro ordenador y el ordenador en la nube), necesario para poder conectarnos a Github, aunque hay herramientas que nos permiten conectarnos a github sin ssh.
+
+Para crear una clave ssh (en git bash):
+	ssh-keygen -t rsa -C "correo@correo.com"
+
+Esto generará un par de llaves y nos pedirá donde queremos que se guarde, por defecto se creará en /User/.ssh/id_rsa. A continuación nos pedirá una contraseña (y que volvamos a escribirla).
+
+Crear y configurar cuenta GitHub
+*********************************
+Lo primero que tenemos que hacer es ir a GitHub y crearnos una cuenta GitHub, después:
+
+- Nos vamos a Account Settings
+- En SSH Publick Keys añadimos otra clave
+- En el directorio .ssh abrimos id_rsa.pub y la información que hay la copiamos y la pegamos en el recuadro de github. Añadimos la Key.
+- Comprobamos que todo va bien: 
+	- Escribimos en el git bash: ssh git@github.com
+	- Nos pedirá nuestra contraseña (la del ssh) y nos indicará si la conexión se ha realizado con éxito.

@@ -1,0 +1,10 @@
+A1 - Comandos Git
+
+Información
+- git --version					// Nos muestra la versión de git
+- git help						// Nos muestra un listado de posibles comandos
+- git help comando				// Nos muestra un listado de determinado comando
+
+- git init						// Crea un repositorio en la carpeta actual
+- git clone urlGit	 			// Clona un repositorio externo en una carpeta con el mismo nombre
+- git clone urlGit nombre		// Clona un repositorio externo en la carpeta indicada

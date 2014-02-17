@@ -1,0 +1,51 @@
+04 - Fundamentos de Git
+
+Crear un nuevo repositorio
+****************************************
+Para obtener un repositorio git tenemos 2 métodos:
+- Genera un repositorio, en un proyecto ya existente:
+	$ git init 				// En el directorio raíz del proyecto
+Esto generará un repositorio en la subcarpeta .git de ese directorio (es una carpeta oculta), si está vacío no pasa nada, pero si tiene archivos hay que añadirlos al repositorio mediante el commit inicial.
+
+- Clonando un repositorio existente.
+	$ git clone urlGit		// urlGit es la ruta al repositorio git
+La dirección puede ser un git@url que se trata de una conexión ssh y usaremos nuestra contraseña privada para clonar o bien https://url en este último caso por lo general no tiene contraseña (si usamos la url de los repositorios públicos de github) o es una privada.
+
+Si usamos el comando anterior nos creará un directorio que tendrá el mismo nombre del proyecto clonado y un servidor git en ese directorio, si queremos clonar con un nombre distinto usaremos:
+	$ git clone urlGit nombreCarpeta
+
+Lo que hace clone:
+	1 - Descarga el repositorio entero en un nuevo directorio
+	2 - Añade el remote origin apuntando a la url clonada
+	3 - Checks out la rama inicial como master
+
+Estados de un archivo
+****************************************
+Inicialmente, cuando un archivo no está en el registro del repositorio se dice que está sin seguimiento (untracked), también se da el caso de los archivos que aunque están en seguimiento han sido modificados.  En ambos casos, existe una información que hay que guardar en el repositorio.
+
+	git status
+
+El anterior comando se utiliza para revisar si los archivos del directorio de trabajo están en alguno de los casos anteriores, además nos indicará si están en el staging área o no, que ya se explicó anteriormente que es una zona intermedia para indicar a git a qué archivos queremos hacer commit.
+
+Para añadir archivos/directorios usaremos:
+	git add archivo 	// Añade un archivo al stage.  Se pueden usar comodines
+	git add .			// Añade todos los archivos modificados al stage
+
+Remover archivos del stage
+****************************************
+De la misma forma que podemos añadir archivos, también podemos remover archivos del stage:
+	git reset HEAD archivo 		// Quita un archivo que está en el stage de él
+
+Ignorar archivos de Git
+****************************************
+A veces queremos que no se lleve un control de determinados archivos con información sensible (claves, multimedia,...) sobre todo si los vamos a compartir en GitHub.
+
+Crearemos un archivo llamado .gitignore, lo abrimos y escribimos los archivos o directorios que no queremos que se gestionen con git.  Dentro podemos usar # para escribir comentarios y comodines.
+	*.log 								// Omitiremos todos los archivos.log
+	*.[ca]								// Omitiremos todo los archivos .c o .a
+	directorio 							// Omitiremos todo el contenido de ese directorio
+	!directorio/important.txt 			// Aunque se haya omitido, el ! indica que no lo ignore
+
+* reconoce cero o más carácteres, [opciones], ! para negar, ? para un único carácter [0-9] para un conjunto de opciones.
+
+Buenas prácticas -> Los datos privados en un archivo y ese nunca compartirlo

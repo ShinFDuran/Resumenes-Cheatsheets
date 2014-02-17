@@ -1,0 +1,39 @@
+05 - Realizando commits
+
+Realizar commit
+****************************************
+Una vez que hemos decidido que vamos a subir esos archivos al repositorio haremos el commit de los archivos que estén en el staging area al repositorio.  Ojo, si hay otros archivos modificados pero no añadidos al staging no se subirán al repositorio.  Es recomendable acompañar cada commit de un mensaje explicando las modificaciones:
+	git commit -m "Mensaje"	// Guardamos los cambios en una base de datos
+
+También existe la posibilidad de saltarnos el staging area y añadir al repositorio todos los archivos untracked y modificados:	
+	git commit -v		// Guarda en el commit los cambios realizados (el diff)
+
+Podemos saltarnos el stage y pasar los archivos modificados directamente al repositorio:
+	git commit -a 		// Guarda los archivos modificados en el repositorio sin pasar por el stage
+
+Hay veces que se nos puede pasar añadir algún archivo al staging área pero que queríamos añadirlo en el commit anterior (porque afecta a la misma funcionalidad), hay una opción para poder añadir archivos nuevos al último commit, eso sí, como condición no debemos haber cambiado los archivos y añadirlo al staging area.
+	git commit --amend
+
+Borrando el último commit
+****************************************
+	git reset HEAD~ 		// Borramos el último commit	
+	git reset --soft HEAD  	// Remueve el último commit y pone los cambios en el staging
+
+Recomendaciones comentarios
+****************************************
+Es muy importante que cada commit sea acompañado de un comentario explicativo, sin embargo, en muchos casos (ahí tampoco me salvo yo) se escriben comentarios muy ambiguos, que en el futuro si tenemos que revisar qué cambios hicimos en un determinado momento (porque luego generan una serie de problemas, por ejemplo) nos sea mucho más fácil.
+
+Es decir, las buenas prácticas y el código limpio también deberían usarse en los comentarios que realizamos con el commit.
+
+- Línea inferior a 50 carácteres
+- Opcionalmente seguida de una línea en blanco y texto más completo
+- Cada línea adicional debe tener menos de 72 carácteres
+- Escribir los mensajes en presente, nada de pasado o referencias futuras
+- Se pueden añadir "tickets de localización" a bugs o peticiones de soporte
+- Podemos ayudarnos por etiquetas:
+	- "[html,py]"
+	- "hotfix: "
+	- "#2345 - "
+- Claro y descriptivo
+	- Mal: "Corregir index"
+	- Bien: "Modificado index con direcciones actualizadas"

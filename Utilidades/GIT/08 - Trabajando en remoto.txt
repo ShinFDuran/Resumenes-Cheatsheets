@@ -1,0 +1,46 @@
+08 - Trabajando en remoto
+
+Por organizar
+
+	git remote -v 					// Nos muestra los listados de los servidores remotos linkeados
+	git remote add origin url-git 	// Añadir una ruta a un repositorio externo
+
+
+git remote pull origin master 			//Idem abajo
+git push -u nombreRepositorio ramalocal
+
+Add remote
+	git remote add <name> <adress>
+Remove remote
+	git remote rm <name> <adress>
+Push to remote
+	git push -u <name> <branch>
+
+Podemos añadir varios servidores remotos y luego usar unos u otros
+	git push heroku master 
+
+
+
+Ahora añadimos github
+- git push 					// Empujamos los datos al servidor remoto y la rama que queremos subir
+- git push origin master  	// Esta es la ruta completa, la anterior por defecto es esta
+
+Fork es hacer una copia de un repositorio en otro repositorio de github. (Modificaríamos nuestro repositoro después de hacerle clone)
+Clone hace una copia de un repositorio diréctamente en tu pc.(Modificaríamos el repositoro clonado)
+
+
+// Existen proyectos que hacen otras personas, son públicos pero no podemos colaborar directamente
+// Podemos usar el fork.  Creamos una copia del proyecto de otra persona en nuestro repositorio
+// Esa copia creada en nuestro repositorio sí podemos modificarla
+// Si hemos añadido alguna funcionalidad o mejora nueva podemos hacer un request
+// Indicamos a los creadores qué cambiamos y porque y los creadores del proyecto pueden aceptar o no el cambio
+
+Una vez creado en nuesto directorio un repositorio (con git init)
+	git remote add origin git@direccion.git
+
+Estamos diciendo que al repositorio donde estamos le añadamos un repositorio remoto, ese repositorio remoto lo vamos a llamar origin y su dirección es esa
+
+Ya tenemos idenficiado el servidor remoto origin, ahora necesitamos obtener la información de él.
+	git pull origin master
+
+Con esta instrucción estamos diciendo que "tire" (descargue) de origin (que es el repositorio remoto) a master (que es nuestro repositorio local)

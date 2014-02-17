@@ -1,0 +1,48 @@
+07 - Registros de commits y diferencias
+
+Registros de los commits
+****************************************
+Cuando se realiza un commit se suelen guardar una serie de datos:
+	- id: Identifica al commit
+	- parent: Nos indica el commit anterior o padre (esto no se ve en el log)
+	- author: Autor del commit
+	- message: Mensaje que se agregó al commit 
+
+	git log 				// Nos muestra los logs de los commits existentes
+
+Sin embargo, cuando el proyecto lleva ya un tiempo son muchos logs, puede que queramos mostrar algunos logs o en algún formato indicado.
+
+Si lo que queremos es buscar algún log determinado podemos usar las siguientes opciones
+	git log -n  						// Nos muestra los n últimos commit
+	git log --since=fecha				// Nos muestra los logs desde la fecha indicada
+	git log --author="NombreAutor" 		// Nos muestra los log del autor indicado
+	git log --grep="expresiónRegular"	// Nos muestra los log que cumplan la condición
+
+Ejemplo, si queremos buscar los mensajes de commit que incluyan menú:
+	git log --grep="menú"
+
+También podemos formatear los logs:
+	git log --oneline		// Historico del commit en forma resumida
+	git log --graph			// Historico del commit en forma gráfica
+	git log --pretty=...	// Historico del commit en forma determinada
+
+Más información del uso de log --pretty en: http://git-scm.com/book/es/Fundamentos-de-Git-Viendo-el-hist%C3%B3rico-de-confirmaciones
+
+Cuando se instala git, también se instala una utilidad gráfica que nos muestra el arbol de commit y más información, para acceder a él, en el directorio del repositorio que queramos observar escribimos:
+	gitk
+
+Diferencias entre archivos
+*************************************
+Hay veces en los que después de un tiempo de trabajo no sabemos bien lo que hemos cambiado, para facilitarnos eso git no da el comando diff.  Diff tiene 2 modalidades.
+
+git diff -> Nos indicará las diferencias que hay entre lo que se ha modificado en nuestro directorio de trabajo y el stage area/repositorio.
+
+git diff --staged -> Nos muestran las diferencias de los archivos staged con el repositorio.
+
+Ejemplo:  
+	- Si modificamos un archivo y hacemos un git diff, nos mostrará los cambios del archivo con respecto al repositorio, pero git diff --staged no mostrará nada.
+	- Si ese archivo lo añadimos al staging area git diff no mostrará nada, pero git diff --staged nos mostrará los cambios del archivo con respecto al repositorio
+
+	 git diff			// Diferencias entre el directorio de trabajo y el stage area/repositorio
+	 git diff --staged	// Diferencias entre el stage area y el repositorio
+	 git diff --cached	// Igual que staged, pero en desuso.

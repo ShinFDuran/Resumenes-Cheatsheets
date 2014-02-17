@@ -1,0 +1,42 @@
+03 - Estructura de Git
+
+Estados de Git
+****************************************
+
+GIT tiene 3 estados/zonas:
+
+Directorio de Trabajo			Staging Area				Repositorio
+Modified						Staged						Commited
+
+Stage de archivos
+|---------------------------------->								
+								Commit
+								|---------------------------------->
+Recuperar una versión (checkout)					
+<-------------------------------------------------------------------|
+
+Supongamos que tenemos un proyecto en un directorio y en ese directorio hemos creado un repositorio para gestionarlo, nuestro directorio principal y sus subdirectorios es lo que se conoce como el directorio o zona de trabajo.
+
+Git (salvo que le indiquemos lo contrario) vigila toda la estructura de directorias de la zona de trabajo y si se crean archivos nuevos o modifican los existentes.
+
+Si en un determinado momento modificamos un archivo, ese archivo modificado sólo estará modificado en nuestro directorio, si por algún motivo volviésemos a otra versión anterior, borrásemos los archivos o demás se perderían los cambios realizados.
+
+Sin embargo, si ese archivo lo hubiesemos guardado en el repositorio, no tendríamos ese problema, aunque se borrrase el archivo podríamos recuperarlo.  Algunos SCV sólo tienen esas 2 zonas, el directorio de trabajo y el repositorio.
+
+Sin embargo, git incluye una tercera zona intermedia entre ambos, cuando hemos modificado un archivo git lo detecta, entonces nosotros lo agregamos a esa zona intermedia y al hacer el commit pasamos esos archivos de la zona intermedia al repositorio, eso nos permite que podamos tener archivos modificados pero sólo subir los que queramos.
+
+Instantáneas de git
+****************************************
+
+Algunos SCV sólo llevan el control de las modificaciones de los archivos, sin embargo, en el caso de git lo que hace son una especie de fotografías, cada vez que hacemos un commit registra todos los archivos.  En algunos indica que ha cambiado y en otros que no.
+
+Si queréis más información con gráficas en Pro Git se explica bien:
+http://git-scm.com/book/es/Empezando-Fundamentos-de-Git
+
+Ayuda en git
+****************************************
+
+Git nos proporciona un sistema de ayuda en el shell (aunque cargará la ayuda en el navegador por defecto) por si tenemos dudas con algún comando:
+- git help				// Nos muestra un listado de posibles comandos
+- git help comando		// Nos muestra un listado de determinado comando
+- git --version			// Nos muestra la versión de git

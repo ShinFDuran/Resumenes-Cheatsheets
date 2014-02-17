@@ -1,0 +1,21 @@
+06 - Borrar/renombrar en Git
+
+Borrando archivos
+****************************************
+A la hora de borrar archivos tenemos opciones.
+
+La habitual, que sería borrando el archivo normalmente.  Entonces al hacer un git status aparecería como que ha sido borrado y tendríamos que añadirlo al staging área mediante git add/rm.  
+
+La acción directa es usando git rm nombreArchivo.  Esto además de borrarlo envía el cambio al staging área.
+	git rm nombreArchivo 		// Borra un archivo del proyecto
+
+Hay que tener en cuenta, que aunque lo borramos seguimos conservando ese archivo en versiones anteriores del proyecto, por lo que si en el futuro lo necesitamoms, podemos recuperarlo
+
+Renombrando archivos
+****************************************
+Al igual que a la hora de borrar tenemos 2 opciones:
+
+La indirecta: Cambiamos el nombre del archivo, luego al hacer status vemos que nos indica que se ha borrado un archivo (nombre antiguo) y se ha creado uno (nuevo nombre).  Enviamos los cambios al stage, si el programa detecta que el 50% del código o más coinciden indica que lo que se ha hecho es renombrarlos.
+
+La directa usando el comando mv que renombra el archivo y agrega los cambios al stage como renombrar.
+	git mv file_old file_new 			// Renombra un archivo y agrega los cambios al stage

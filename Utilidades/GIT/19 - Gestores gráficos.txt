@@ -1,0 +1,14 @@
+19 - Gestores gráficos
+
+GitHub for Windows - windows.github.com
+Añadimos nombre de usuario y contraseña de Github y el programa se sincroniza con la versión de GitHub
+No es necesario configurar las keys .ssh
+
+
+Gestores gráficos
+- www.git-tower.com 		// Mac
+- gitboaxapp.com
+- code.google.com/p/tortoisegit/
+- www.syntevo.com/smartgit/index.html
+
+Tortoise Git - Cliente bueno para windows.
