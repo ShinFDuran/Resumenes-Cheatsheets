@@ -1,0 +1,14 @@
+Plantillas
+******************************************************
+
+Django incluye un motor de plantillas.  Haciendo una comparación sencilla, sería como si una web tuviera una plantilla modelo para solicitar un producto, diferentes personas se lo descargarían, rellenarían unos campos en blanco y lo imprimirían, así partiendo de la misma base agilizar mucho todo el proceso.  El caso de Python es similar, pero más potente.
+
+Existe un mini-lenguaje que nos permite dentro de la plantilla realizar herencia, bucles y otra serie de operaciones sencillas en los que a partir de unas plantillas completarlas y generar las páginas web resultantes.
+
+Es necesario indicar en settings.py el directorio donde están almacenadas las plantillas.
+
+Herencia en las plantillas
+******************************************************
+Una de las características más potentes en el motor de plantillas de Django es que soportan herencia, esto nos permite que haya una plantilla base y que otras hereden de ahí, de forma que si hay que hacer algunos cambios sólo necesitemos hacerlo en un número reducido de plantillas.
+
+Por ejemplo, una plantilla base podría contener todo lo que es el head, el menú de navegación y footer y luego en una plantilla que heredase completar la página con el título y el cuerpo.

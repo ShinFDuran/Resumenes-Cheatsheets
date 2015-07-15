@@ -1,0 +1,85 @@
+URLConf
+******************************************************
+URLConf es un script que nos permite redirigir a diferentes vistas en función de la URL que se le envíe al navegador.  Se trata de un mapeo entre patrones de urls (mediante expresiones regulares) y su correspondiente vista.
+
+Procedimiento
+******************************************************
+- Django recibe un HttpRequest (una petición). Que puede provenir de:
+	* Navegador -> ROOT_URLCONF
+	* Middleware -> El objeto incluye variable urlconf
+- Se revisa la lista contenida en la variable urlpatterns.
+- Comprueba expresión por expresión (en orden descendiente de urls.py) si coincide con el patrón de alguna expresión regular.
+- Si recorre toda la lista sin que coincida con ninguna expresión regular, Django invocará la vista correspondiente al error producido.
+- Si encuentra una coincidencia ejecutará la vista asociada.
+
+De aquí se puede sacar una conclusión, de que si hay urls que encajaran con varias expresiones regulares, se ejecutaría la primera vista sólamente.
+
+Notas: 
+	- Todas las url incorporan el / inicial.  Para web/sobre sería '^sobre' y no '^/sobre'.  '^$' es válido tanto para 'dominio.com' como para 'dominio.com/'.
+
+Patterns
+******************************************************
+Se trata de una función que toma un número arbitrario de urls, convirtiéndolos en una lista de URLs en un formato entendible por Django.  Su sintaxis es:
+	patterns(prefix, pattern_description, ...)
+
+El prefijo se refiee al paquete de la vista que usaremos, los siguientes 2 casos son equivalentes:
+	urlpatterns = patterns('',
+	    (r'^blog/$', 'web.views.blog'),
+	)
+
+	urlpatterns = patterns('web.views',
+	    (r'^blog/$', 'blog'),
+	)
+
+También es posible modularizarlo, siempre y cuando no superen las 255 urls, así que serían equivalentes:
+	urlpatterns = patterns('',
+	    (r'^blog/$', 'web.views.blog'),
+	    (r'^archivo/$', 'web.views.archivo'),
+	)
+
+	urlpatterns = patterns('',
+	    (r'^blog/$', 'web.views.blog'),
+	)
+	urlpatterns += patterns('',
+	    (r'^archivo/$', 'web.views.archivo'),
+	)
+
+url
+******************************************************
+La función url se usa como argumento en patterns y tiene la siguiente sintaxis:
+	url(regex, view, kwargs=None, name=None, prefix='')
+
+Los parámetros:
+	(regular expression, Python callback function [, optional dictionary [, optional name]])
+
+Resumiendo, podríamos decir que se trata de pares expresión regular y vista asociada, con otros parámetros opcionales.
+
+Named groups
+******************************************************
+Es posible a la hora de usar la expresión regular como filtro guardar alguno de sus valores en una variable, así por ejemplo:	
+    (r'^articles/(\d{4})/$', 'news.views.year_archive'),
+    (r'^articles/(?P<year>\d{4})/$', 'news.views.year_archive'),
+
+El patrón de la expresión regular es el mismo, la diferencia es que estoy guardando un valor en una variable:
+	(?P<name>pattern)
+
+La vista recibirá un diccionario donde al valor de name le corresponderá el valor introducido en el navegador.
+
+include
+******************************************************
+Existe la posibilidad a fin de aclarar código que en lugar de que la expresión regular redirija a una vista, lo haga a otro módulo URLconf:
+	# In settings/urls/main.py
+	urlpatterns = patterns('',
+	    (r'^(?P<username>\w+)/blog/', include('foo.urls.blog')),
+	)
+
+	# In foo/urls/blog.py
+	urlpatterns = patterns('foo.views',
+	    (r'^$', 'blog.index'),
+	    (r'^archive/$', 'blog.archive'),
+	)
+
+Nota: Tras el primer filtro, URL dispatcher sólo enviaría el resto de la cadena a partir de blog/ y es lo que se usará en el siguiente bloque para seleccionar la vista.  Así que hay que tener cuidado con el $, si usáramos:
+	(r'^(?P<username>\w+)/blog/$', include('foo.urls.blog')),
+
+Al segundo bloque de urls sólo llegaría el string ''.  Los named group previos al corte se pasan como un diccionario que se volverán a pasar a la vista que se ejecute en el include().

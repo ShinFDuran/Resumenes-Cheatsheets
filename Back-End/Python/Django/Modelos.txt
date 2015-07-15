@@ -1,0 +1,41 @@
+Modelos
+
+Modelado con Django
+******************************************************
+Django tiene un ORM que nos permite convertir clases de Python a la base de datos cuyas ventajas son:
+	- Podemos crear los objetos y estos serán convertidos en la estructura de tablas que le corresponda.
+	- Es independiente de la base de datos, escribimos las clases una vez y en función de la base de datos que indiquemos en la configuración Django generará su código correspondiente.
+	- No es necesario realizar sentencias SQL, tenemos nuestras propias funciones.
+
+Cada app tiene un documento llamado models.py que es donde estarán las clases que representan a los objetos de esa aplicación.
+
+Creación de los modelos
+******************************************************
+Lo primero que hay que hacer es importar la clase models:
+	from django.db import models
+
+Creamos las clases necesarias.  Esas clases heredarán de models.Model y sus atributos son obtenido de model.  Uno de los puntos más importantes aquí es que los atributos de la clase los realizaremos a partir de un tipo de datos existentes en models y se corresponden a los tipos de datos en las diferentes base de datos, además cada aributo tiene unas opciones de campo.
+
+Además, hay que incluir un método que se encarga de devolver el texto que queremos que represente a cada objeto: 
+
+	def __unicode__(self)		// En la versión 2.X de Python
+	def __str__(self)			// En la versión 3.X de Python
+
+El siguiente paso es crear las tablas correspondientes a esos objetos en la base de datos.  La app tiene que estar en el listado de INSTALLED_APPS y a continuación sincronizaremos la aplicación con la base de datos:
+	python manage.py syncdb
+
+Modelos en el panel de administración
+******************************************************
+Llegados a este punto la/s tabla/s se han creado, sin embargo, no aparecerán en el panel de administración.
+
+
+
+Shell Django
+******************************************************
+Para probar este sistema de modelado Django nos permite usar un shell con el que consultar/manipular los datos.
+	python manage.py shell
+
+Lo primero que hay que hacer es importar los modelos:
+	from prueba.models import Persona
+
+A partir de aquí podemos usar los métodos para realizar las consultas, hay que tener en cuenta que son los mismos que se usarán en las vistas, sin embargo, aquí lo podemos usar de forma dinámica para ir accediendo a la base de datos, modificando, borrando o cualquier prueba que creamos conveniente.

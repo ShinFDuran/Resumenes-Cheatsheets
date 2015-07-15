@@ -1,0 +1,19 @@
+Vistas
+
+Son funciones que reciben una solicitud (HttpRequest) y devuelven una página web, entre otros posibles datos (HttpResponse).
+
+Las vistas están contenidas en el archivo views.py y contienen toda la lógica necesaria para poder devolver una respuesta.
+
+
+Acceso a base de datos
+******************************************************
+Como se ha dicho dentro de la vista se incorpora la lógica necesaria, parte de esa lógica sería el acceso a base de datos, ya sea para obtener unos datos o para modificarlos:
+	usuarios = User.objects.all() 			// Obtiene el listado de usuarios de la base de datos
+
+Este tipo de operaciones son las mismas que se pueden realizar en el shell de Django.
+
+
+
+Shortcuts
+******************************************************
+from django.shortcuts import render_to_response, get_object_or_404
