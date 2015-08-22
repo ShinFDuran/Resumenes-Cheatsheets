@@ -13,6 +13,40 @@ Por eso y por la programación orientada a eventos que nos ofrece Node, el apren
 
 Este resumen tiene como finalizad concentrar la información conseguido en una serie de tutoriales y libros, de forma clara (al menos para mi) y con algunos ejemplos.
 
-Índice
+Guía en contínua evolución
+----------------------------------------------------------------------------------------------
+Eso es algo que quería añadir, esta guía no es algo fijo en plan "Se esto y lo suelto capítulo a capítulo", sino mas bien una especie de chuleta-recordatorio para uso propio.  En estos momento, ya tengo una base pero me faltan campos por aprender y aún después de eso y de escribir las secciones, habrán revisiones debido a ver lo mismo por otras fuentes que me den una nueva visión.
+
+Por eso mismo, si alguien va revisando esta guía u otras durante el desarrollo que haya secciones que vayan cambiando con el tiempo.
+
+Índice (Temporal)
 ----------------------------------------------------------------------------------------------
 00 - Express.js - Introducción
+01 - Fundamentos
+	- package.json
+	- Módulos-Packages
+	- Middlewares
+	- Estructura de datos
+	- Estructura de la aplicación	
+02 - Enrutamiento	
+	- Estructura REST - Verbos
+	- Contenido estático
+- Peticiones
+	- Objeto request
+	- Formularios
+- Respuestas
+	- Objeto response
+	- JSON
+- Vistas-Templates
+	- EJS
+	- Jade
+	- Handlebars
+- Persistencia - Modelado de Bases de datos
+- Sessions
+- Autentificación
+- Websockets
+- Testeo-Mantenimiento
+- Producción
+- Performance
+- Seguridad
+- APIs
