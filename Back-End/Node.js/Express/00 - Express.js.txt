@@ -31,13 +31,13 @@ Por eso mismo, si alguien va revisando esta guía u otras durante el desarrollo 
 02 - Enrutamiento	
 	- Estructura REST - Verbos
 	- Contenido estático
-- Peticiones
+03 - Peticiones
 	- Objeto request
 	- Formularios
-- Respuestas
+04 - Respuestas
 	- Objeto response
 	- JSON
-- Vistas-Templates
+05 - Vistas-Templates
 	- EJS
 	- Jade
 	- Handlebars

@@ -9,11 +9,42 @@ package.json
 
 Módulos-Packages
 ----------------------------------------------------------------------------------------------
-
+- Todas las aplicaciones Express son módulos de node:  Los módulos de node vienen con un archivo manifiesto llamado package.json que contiene detalles del módulo.
 
 Middlewares
 ----------------------------------------------------------------------------------------------
+- Su función es la de gestionar las peticiones que recibe la aplicación Express.
+	- Se cargan en Express con app.use
+	- Es una función que acepta 3 parámetros: req, res y next
+	- Puede finalizar la petición devolviendo la respuesta o llamar al siguiente middleware
+	- El orden de asignar los middlewares a Express importa.  Los primeros en ser asignados tendrán preferencia a la hora de ser ejecutados.
 
+- Flujo de las peticiones:
+	- La petición HTTP llega al stack de middlewares, que pueden modificar los objetos req y res
+	- El middleware router define las rutas y la gestión posterior
+
+Para explicarlo más fácilmente lo mejor es una imagen: http://image.slidesharecdn.com/introtonode-140914093424-phpapp01/95/intro-to-nodejs-14-638.jpg?cb=1410687757
+
+Al principio de la aplicación tenemos una zona en la que definimos los middlewares que va a usar, a medida que se van declarando van tomando un número o preferencia a la hora de ejecutarse.  
+
+Supongamos el caso de las rutas, que es más fácil.  Pueden darse 2 casos:
+	- Que la petición no coincida con el verbo y ruta y no haga nada, sigue su camino.
+	- Que la petición coincida con el verbo y ruta y devuelve una respuesta.  Se acabó.
+	- Que la ruta/verbo no coincide con nada... normalmente al final se coloca un get con el wildcard * y lo encauza a la vista del error 404, si se hace de forma elegante.
+
+Resumiendo, el caso simple recibimos una petición y va intentando hasta que encuentra algo que coincida con la petición y devuelva la salida, pero también existe otro caso, en el que pasa por un middleware, modifica la información y le pasa el control al siguiente con el método next().
+
+En ejemplo muy claro (pero no básico, porque ocupa conceptos que pongo posteriormente) es cuando en un formulario emulamos un método como PULL o DELETE.  Aunque Express puede gestionar una amplia variaded de verbos HTTP, los formularios sólo pueden enviar peticiones de tipo GET o POST, pero para una interfaz REST necesitamos PULL y DELETE.
+
+methodOverride es un package que nos permite convertir envíos del tipo POST en PULL o DELETE, pero para eso necesita una variables oculta que va en el cuerpo de los formularios enviados con POST, pero... para poder acceder a esas variables necesito que bodyParser las haya habilitado.  Ej:
+	// Habilitamos parámetros post de req.body
+	app.use(bodyParser.urlencoded());       
+	// Sobreescribimos métodos con el valor de la vble _method
+	app.use(methodOverride('_method'));     
+	// Ahora podemos recibir la petición DELETE de un artículo
+	app.delete('/article/:idArticle', callback); 	
+
+Si se cambiase el orden de cualquier elemento la aplicación no sería capaz de recibir la petición de eliminar un artículo porque los pasos previos son dependientes, de ahí que hay que tener mucho cuidado a la hora de asignar el orden de los middlewares.
 
 Estructura de datos
 ----------------------------------------------------------------------------------------------
@@ -21,4 +52,17 @@ Estructura de datos
 
 Estructura de la aplicación
 ----------------------------------------------------------------------------------------------
+Hay muchas posibles estructuras para el archivo principal de la aplicación que normalmente suele ser app.js, pero aunque en contenido suelen ser bastante similares, en forma algunas parecen peores o mejores.  A mi particularmente la que me gusta es la que suelo emplear:
+https://github.com/ShinFDuran/quiz-2015-MiriadaX/blob/master/app.js o en versión más light 
+https://github.com/ShinFDuran/codigofacilito-Node/blob/master/app.js
 
+// **************  Zona de importación de paquetes
+Se importan todos los paquetes necesarios, rutas incluidas
+// **************  Generamos la aplicación
+var app = express();
+// **************  Zona de configuraciones de la aplicación
+Asignamos los middlewares y posibles configuraciones de datos como los de engines.  Finalizo con las rutas.
+// **************  Zona de gestión de errores
+Gestión de los errores, no considerando como error el 404, que se gestiona con la wildcard * dentro de las rutas.
+// **************  Arrancamos la aplicación
+Ejecución de la aplicación.
