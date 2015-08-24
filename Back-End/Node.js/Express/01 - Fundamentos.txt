@@ -5,11 +5,60 @@ No voy a explicar como se instala Node.js o Express.js ya que hay mucho lugar y 
 
 package.json
 ----------------------------------------------------------------------------------------------
+El manifesto de Express está en el archivo package.json, puede contener una gran cantidad de atributos, los más destacables son:
+	- name: Nombre del módulo
+	- version: Versión del módulo
+	- private: Indicamos si queremos que este módulo aparezca publicado en el registro de npm
+	- scripts: Comandos npm para el módulo
+	- dependencies: Lista de otros módulos de Node del que depende
 
+Guía interactiva: http://browsenpm.org/package.json
+
+Con npm install podemos instalar las dependencias que están en node_modules desde 0
 
 Módulos-Packages
 ----------------------------------------------------------------------------------------------
 - Todas las aplicaciones Express son módulos de node:  Los módulos de node vienen con un archivo manifiesto llamado package.json que contiene detalles del módulo.
+
+Los package en Node es el equivalente a las librerías.  Hay 2 formas de crearlos:
+	- Adjuntando propiedades y funciones al objeto exports. Ej:
+		var name = exports.name = 'Packt'; 
+		var secret = 'zoltan';
+		exports.lower = function(input) {   return input.toLowerCase(); }; 
+		exports.upper = function(input) {   return input.toUpperCase(); }; 
+		exports.get_name = function() {   return name; } 
+		exports.get_secret = function() {   return secret; }
+
+		// Nota: Lo adjuntado al objeto export es una propiedad pública, las variables creadas con var pero sin adjuntarlas al objeto export se convierten en variables privadas del módulo.
+		var mod = require('./mymod.js'); 
+		console.log(mod.name); 
+		console.log(mod.lower('APPLE')); 
+		console.log(mod.upper('mango')); 
+		console.log(mod.get_name());	
+
+	- Asignando objetos JavaScript la propiedad module.exports de un módulo. Ejemplo:
+		var secret = 'zoltan'; 
+		module.exports = {
+			name: 'Packt',   
+			lower: function(input) {     return input.toLowerCase();   },   
+			upper: function(input) {     return input.toUpperCase();   },   
+			get_name: function() {     return this.name;   },   
+			get_secret: function() {     return secret;   } 
+		};
+		------------------------------
+		module.exports = function(word) {   
+			var reversed = '';   
+			var i = word.length - 1;   
+			while (i> -1) {     
+				var letter = word[i];     
+				reversed += letter;     
+				i--;   
+			}   
+			return reversed; 
+		};
+		------------------------------
+		var reverse  = require('./reverse.js'); 
+		console.log(reverse('prueba'));
 
 Middlewares
 ----------------------------------------------------------------------------------------------
