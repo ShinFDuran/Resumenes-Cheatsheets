@@ -30,6 +30,9 @@ Por eso mismo, si alguien va revisando esta guía u otras durante el desarrollo 
 	- Estructura de la aplicación	
 02 - Enrutamiento	
 	- Estructura REST - Verbos
+	- Parámetros en la ruta
+	- Orden de precedencia de las rutas
+	- Notas sobre enrutamiento
 	- Contenido estático
 03 - Peticiones
 	- Objeto request

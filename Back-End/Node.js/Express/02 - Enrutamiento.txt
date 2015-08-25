@@ -1,0 +1,62 @@
+02 - Enrutamiento	
+**********************************************************************************************
+El enrutamiento es el sistema por el que a partir de una petición al servidor direccionamos a una determinada acción.
+
+Estructura REST - Verbos
+----------------------------------------------------------------------------------------------
+REST es la abreviatura de REpresentational State Transfer: https://en.wikipedia.org/wiki/Representational_state_transfer y es una serie de principios arquitecturales para aplicaciones web escalables.
+
+Voy a intentar resumir y simplificarlo mucho, que no es fácil:
+	- Cada URL representa un recurso único en la web.
+	- Cada verbo o método representa una acción sobre ese recurso.
+	- Los principales verbos o métodos son: POST, GET, PUT y DELETE que se corresponden a las acciones de crear, leer, modificar y borrar CRUD en base de datos.
+
+En lo que a Express se refiere:
+	- Utilizaremos GET para solicitar una página o recurso y el resto para las diferentes acciones de creación, edición o borrado.
+	- Express puede gestionar diferentes tipos de peticiones (verbos) a la misma dirección:
+		app.get('/', ...);
+		app.post('/', ...);
+	- También existe el método .all que responde a todos los verbos:
+		app.all('/', ...);
+
+El sistema REST está muy difundido en web services debido entre otras cosas a que nos permite separar el front-end del back-end dado que es posible que en lugar de devolver páginas devolver json que luego sean consumidos tanto en frameworks front-end como Angular.js o en apps de Android o iPhone.
+
+Parámetros en la ruta
+----------------------------------------------------------------------------------------------
+- Las rutas están definidas sólo por el path solicitado, sin tener en cuenta los parámetros del query del get.
+- Pueden ser strings o expresiones regulares
+- Es posible definir parámetros en la ruta:
+	app.get('/user/:id', function(req, res) {
+	   res.send('Usuario: ' + req.params.id); 
+	});
+
+	app.get('/nombre/:nombre/apellidos/:apellidos', function(req, res) {   
+		res.send(req.params.nombre + ' ' + req.params.apellidos); 
+	});
+- Los parámetros se almacenan como propiedades en el objeto req.params
+- Existe un subset de expresiones regulares para las rutas: "? + * ()".  Sin embargo, es recomendable minimizar su uso ya que aunque son potentes, son difíciles de testear y mantener.
+
+Orden de precedencia de las rutas
+----------------------------------------------------------------------------------------------
+- El orden en que son declaradas afecta a su precedencia.
+- Puede darse el caso de rutas inaccesibles.
+- En la función, se le pasa un tercer parámetro, next para indicar el siguiente middleware.
+
+Gestión de rutas:
+	- Llega la petición
+	- Pasa por el filtro de rutas
+		- Si cumple las condiciones de alguna se ejecuta el callback
+			- Puede parsear la información, modificando req o res
+			- Puede devolver una respuesta finalizando la petición
+			- Puede pasar el control al siguiente middleware con la función next()
+		- En la ruta se pueden especificar múltiples callback, finalizando con un next, si devuelve la respuesta no ejecutará el resto.
+
+Notas sobre enrutamiento
+----------------------------------------------------------------------------------------------
+Hay que tener cuidado con los subdominios porque rutas como '/about' afectaría tanto al dominio principal como a los subdominios //subdomain.domain.com/about.  Para gestionarlos está el middleware vhost.
+
+Los formularios sólo pueden enviar como método get y post; express mediante el middleware methodOverwrite puede transformar el post en otro tipo de método.
+
+
+Contenido estático
+----------------------------------------------------------------------------------------------
